@@ -16,7 +16,6 @@ export default function Checkout() {
   const { formatDate, formatTime } = useFormatDate();
   const { copyToClipboard, isCopied } = useCopyToClipboard();
   const [paymentInfo, setPaymentInfo] = useState(null);
-  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
@@ -36,7 +35,6 @@ export default function Checkout() {
           const data = JSON.parse(event.data);
           if (data.status) {
             setPaymentInfo(data);
-            setStatus(data.status);
 
             if (data.status === 'CO' || data.status === 'AC') {
               router.push('/success');
