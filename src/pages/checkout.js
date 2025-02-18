@@ -31,7 +31,7 @@ export default function Checkout() {
       const message = { status: 'CO', paymentId: identifier, amount: 0.400705, currency: 'XRP_TEST' };
       socket.send(JSON.stringify(message));
     };
-
+    console.log(status)
     socket.onmessage = (event) => {
 
       if (event.data && event.data.startsWith("{") && event.data.endsWith("}")) {

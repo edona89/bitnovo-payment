@@ -76,7 +76,7 @@ export default function Index() {
                     <div className="mb-4" style={{ position: "relative", marginTop: "10px" }}>
                         <label className="label-custom" style={{ display: "flex" }}>Seleccionar moneda
                             <Image
-                                src="/assets/images/infotool.png"
+                                src="/assets/images/info-tool.png"
                                 alt="Pago exitoso"
                                 width={14}
                                 height={14}
