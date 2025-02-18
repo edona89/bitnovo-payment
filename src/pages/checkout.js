@@ -6,6 +6,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { ClipLoader } from 'react-spinners';
 import { useFormatDate } from '../app/hooks/useFormatDate';
 import useCopyToClipboard from '../app/hooks/useCopyToClipboard';
+import useWebSocket from '../app/hooks/useWebSocket';
 import Image from "next/image";
 import "./../app/styles/globals.css";
 import Footer from "./../app/components/Footer.js"
@@ -23,44 +24,8 @@ export default function Checkout() {
   const [selectedOption, setSelectedOption] = useState('QR');
   const [addressQr, setAddressQr] = useState(null);
 
-
-  useEffect(() => {
-    const socket = new WebSocket(`wss://payments.pre-bnvo.com/ws/${identifier}`);
-    socket.onopen = () => {
-      console.log("Conexión WebSocket Abierta");
-    };
-    socket.onmessage = (event) => {
-      if (event.data && event.data.startsWith("{") && event.data.endsWith("}")) {
-        try {
-          const data = JSON.parse(event.data);
-          if (data.status) {
-            setPaymentInfo(data);
-
-            if (data.status === 'CO' || data.status === 'AC') {
-              router.push('/success');
-            } else if (data.status === 'EX' || data.status === 'OC') {
-              router.push('/failed');
-            }
-          }
-        } catch (error) {
-          console.error('Error al parsear los datos del WebSocket:', error);
-        }
-      }
-    };
-
-    socket.onerror = (error) => {
-      console.error('Error en WebSocket:', error);
-    };
-
-    socket.onclose = () => {
-      console.log('Conexión WebSocket cerrada');
-    };
-
-    return () => {
-      socket.close();
-    };
-  }, [identifier, router]);
-
+  useWebSocket(identifier, router, setPaymentInfo);
+  
   useEffect(() => {
     if (typeof window !== 'undefined' && window.ethereum) {
       setIsMetaMaskInstalled(true);
