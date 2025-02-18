@@ -42,8 +42,6 @@ export default function Checkout() {
               router.push('/success');
             } else if (data.status === 'EX' || data.status === 'OC') {
               router.push('/failed');
-            } else if (data.status === 'PE') {
-
             }
           }
         } catch (error) {
