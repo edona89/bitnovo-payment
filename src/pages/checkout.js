@@ -8,6 +8,7 @@ import { useFormatDate } from '../app/hooks/useFormatDate';
 import useCopyToClipboard from '../app/hooks/useCopyToClipboard';
 import Image from "next/image";
 import "./../app/styles/globals.css";
+import Footer from "./../app/components/Footer.js"
 
 export default function Checkout() {
   const router = useRouter();
@@ -341,8 +342,7 @@ export default function Checkout() {
           </div>
         </div>
       </div>
-
-
+      <Footer />
     </div>
   );
 }

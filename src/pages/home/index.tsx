@@ -5,6 +5,7 @@ import { fetchCurrencies } from "../../app/hooks/useCurrencies";
 import { createPayment } from "../../app/hooks/usePayments";
 import "./../../app/styles/globals.css";
 import Image from "next/image";
+import Footer from "./../../app/components/Footer.js" 
 
 interface Currency {
     symbol: string;
@@ -258,6 +259,7 @@ export default function Index() {
                 </button>
 
             </div>
+            <Footer />
         </div>
     );
 }

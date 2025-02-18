@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ClipLoader from "react-spinners/ClipLoader";
 import "./../app/styles/globals.css";
+import Footer from "./../app/components/Footer.js"
 
 export default function Success() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export default function Success() {
           Crear nuevo pago
         </button>
       </div>
+      <Footer />
     </div>
   );
 }
