@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Mulish", sans-serif;
+}
+
+@layer components {
+  .container-container {
+    @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[490px] h-[420px] rounded-[16px] flex flex-col justify-center items-center p-8 bg-white;
+  }
+
+  .container-content {
+    @apply w-[426px] h-[300px] flex flex-col justify-center items-center gap-[16px];
+  }
+
+  .loading-overlay {
+    @apply fixed top-0 left-0 w-full h-full bg-black/50 z-20 flex justify-center items-center;
+  }
+
+  .container-title {
+    @apply w-[426px] h-[25px] font-bold text-[20px] leading-[25px] tracking-[0%] text-center;
+    font-family: "Mulish", sans-serif;
+  }
+
+  .container-text {
+    @apply w-[360px] h-[72px] text-[16px] font-normal leading-[24px] tracking-[0%] text-center;
+    font-family: "Mulish", sans-serif;
+  }
+
+  .container-button {
+    @apply w-[426px] h-[56px] rounded-[6px] py-[18px] px-[24px] gap-[10px] bg-[#035AC5] text-white text-center font-medium text-[16px];
+  }
+
+  .container-title-payment {
+    @apply w-full text-center text-[26px] h-[20px] leading-[40.56px] tracking-[0%] font-bold text-[#002859] font-mulish;
+  }
+
+  .container-container-payment {
+    @apply fixed inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[673px] h-[533px] rounded-[16px] border-[1px] border-[#F5F5F5] p-[32px] gap-[32px] bg-white;
+  }
+
+  .container-container-payment-form {
+    @apply w-[609px] h-[340px] rounded-[16px] p-[32px] bg-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-container-payment-form label {
+    @apply h-[20px] font-bold text-[14px] leading-[20px] tracking-[1%] font-[Mulish] text-[#002859] block text-left;
+    margin-bottom: 5px;
+  }
+
+  .input-custom {
+    @apply w-[609px] h-[56px] rounded-[6px] border-[1px] p-[18px_12px] gap-[8px] text-custom-blue text-[14px];
+  }
+
+  .select-custom {
+    @apply w-[609px] h-[56px] rounded-[6px] border-[1px] p-[18px_12px] gap-[8px] text-custom-blue text-[14px];
+  }
+
+  .seleccionar-criptomonedas {
+    @apply text-[#002859] font-mulish font-bold text-xl leading-[22px] tracking-normal;
+  }
+}
