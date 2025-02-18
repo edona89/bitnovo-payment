@@ -26,11 +26,10 @@ export default function Checkout() {
 
 
   useEffect(() => {
-    const socket = new WebSocket('wss://echo.websocket.orgorgorgorgorgorgorgorgorg');
+    const socket = new WebSocket(`wss://payments.pre-bnvo.com/ws/${identifier}`);
 
     socket.onopen = () => {
-      const message = { status: 'CO', paymentId: identifier, amount: 0.400705, currency: 'XRP_TEST' };
-      socket.send(JSON.stringify(message));
+      console.log("Conexión WebSocket Abierta")
     };
     console.log(status)
     socket.onmessage = (event) => {
