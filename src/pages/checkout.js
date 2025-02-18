@@ -25,7 +25,7 @@ export default function Checkout() {
 
 
   useEffect(() => {
-    const socket = new WebSocket('wss://echo.websocket.orgorgorg');
+    const socket = new WebSocket('wss://echo.websocket.orgorgorgorgorgorgorgorgorg');
 
     socket.onopen = () => {
       const message = { status: 'CO', paymentId: identifier, amount: 0.400705, currency: 'XRP_TEST' };
@@ -33,11 +33,9 @@ export default function Checkout() {
     };
     console.log(status)
     socket.onmessage = (event) => {
-
       if (event.data && event.data.startsWith("{") && event.data.endsWith("}")) {
         try {
           const data = JSON.parse(event.data);
-
           if (data.status) {
             setPaymentInfo(data);
             setStatus(data.status);
@@ -46,16 +44,15 @@ export default function Checkout() {
               router.push('/success');
             } else if (data.status === 'EX' || data.status === 'OC') {
               router.push('/failed');
+            } else if (data.status === 'PE') {
+
             }
-          } else {
           }
         } catch (error) {
           console.error('Error al parsear los datos del WebSocket:', error);
         }
-      } else {
-        console.error('Mensaje recibido no es un JSON válido:', event.data);
-      };
-    }
+      }
+    };
 
     socket.onerror = (error) => {
       console.error('Error en WebSocket:', error);
