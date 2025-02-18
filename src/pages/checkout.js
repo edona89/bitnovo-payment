@@ -162,7 +162,13 @@ export default function Checkout() {
                     Moneda Seleccionada:
                   </p>
                   <p className="flex items-center justify-between font-mulish font-semibold text-[16px] leading-[20px] tracking-normal text-right text-[#002859] pr-[20px]">
-                    <img src={currencyImage} alt="Imagen no disponible" className="w-[30px] h-[30px] ml-[10px]" />
+                    <Image
+                      src={currencyImage}
+                      alt="Imagen no disponible"
+                      className="w-[30px] h-[30px] ml-[10px]"
+                      width={30}
+                      height={30}
+                    />
                     {selectedCurrency}
                   </p>
                 </div>
@@ -259,7 +265,13 @@ export default function Checkout() {
                   <div
                     className="w-[193px] h-[193px] rounded-[12px] border-[1px] border-[#E5E9F2] overflow-hidden"
                   >
-                    <img src="https://metamask.io/images/metamask-logo.png" alt="MetaMask" className="w-full h-full object-cover" />
+                    <Image
+                     src="https://metamask.io/images/metamask-logo.png"
+                      alt="Imagen no disponible"
+                      className="w-full h-full object-cover"
+                      width={193}
+                      height={193}
+                    />
                   </div>
                 </div>
               )}

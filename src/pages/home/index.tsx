@@ -96,7 +96,7 @@ export default function Index() {
                         >
                             {selectedCurrency ? (
                                 <div style={{ display: "flex", alignItems: "center" }}>
-                                    <img
+                                    <Image
                                         src={selectedCurrency.image}
                                         alt={selectedCurrency.symbol}
                                         width={24}
@@ -192,7 +192,7 @@ export default function Index() {
                                                 }}
                                             >
                                                 <div style={{ display: "flex", alignItems: "center" }}>
-                                                    <img
+                                                    <Image
                                                         src={currency.image}
                                                         alt={currency.symbol}
                                                         width={32}
