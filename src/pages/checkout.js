@@ -266,12 +266,13 @@ export default function Checkout() {
                     className="w-[193px] h-[193px] rounded-[12px] border-[1px] border-[#E5E9F2] overflow-hidden"
                   >
                     <Image
-                     src="https://metamask.io/images/metamask-logo.png"
+                      src="https://metamask.io/images/metamask-logo.png"
                       alt="Imagen no disponible"
                       className="w-full h-full object-cover"
                       width={193}
                       height={193}
                     />
+                    <p>{walletAddress}</p>
                   </div>
                 </div>
               )}
