@@ -27,11 +27,9 @@ export default function Checkout() {
 
   useEffect(() => {
     const socket = new WebSocket(`wss://payments.pre-bnvo.com/ws/${identifier}`);
-
     socket.onopen = () => {
-      console.log("Conexión WebSocket Abierta")
+      console.log("Conexión WebSocket Abierta");
     };
-    console.log(status)
     socket.onmessage = (event) => {
       if (event.data && event.data.startsWith("{") && event.data.endsWith("}")) {
         try {
@@ -75,22 +73,25 @@ export default function Checkout() {
 
   useEffect(() => {
     if (!router.isReady || !identifier) return;
-
+  
     const fetchPaymentInfo = async () => {
       try {
         setLoading(true);
         const response = await api.get(`/orders/info/${identifier}`);
-        setPaymentInfo(Array.isArray(response.data) ? response.data[0] : response.data);
+        const data = Array.isArray(response.data) ? response.data[0] : response.data;
+        
+        setPaymentInfo(data);
+  
         setLoading(false);
       } catch (error) {
         setError(`Error al obtener la información: ${error.response?.status} - ${error.response?.data?.message || 'Desconocido'}`);
         setLoading(false);
       }
     };
-
+  
     fetchPaymentInfo();
   }, [router.isReady, identifier]);
-
+  
   useEffect(() => {
     if (paymentUri) {
       const addressQrValue = paymentUri.split(':')[1]?.split('?')[0];
@@ -319,7 +320,7 @@ export default function Checkout() {
                     {`Etiqueta de destino: `}
                   </span>
                   <span className="font-semibold text-[12px] leading-[20px] tracking-[1%]">
-                    {paymentInfo?.identifier}
+                    {paymentInfo?.tag_memo}
                   </span>
                   <Image
                     src="/assets/images/copy.png"
@@ -327,7 +328,7 @@ export default function Checkout() {
                     width={18}
                     height={18}
                     className="w-[18px] h-[18px]"
-                    onClick={() => copyToClipboard(paymentInfo?.identifier)}
+                    onClick={() => copyToClipboard(paymentInfo?.tag_memo)}
                     style={{ cursor: 'pointer', marginLeft: '10px' }}
                   />
                 </div>
